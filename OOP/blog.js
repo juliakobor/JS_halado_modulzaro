@@ -22,13 +22,36 @@ export class Blog {
             .then(data => {
                 data.forEach(item => {
                     this.#posts.push(item)
+                    //this.#posts.push(new Post(item.id, item.body, item.id))
                 })
             })
             .catch(error => {
                 console.log("error:", error)
             });
     }
+    addPost = function (post) {
+        this.#posts.push(post);
+    }
+
+    deletePost = function (id) {
+        for (let i = 0; i < this.#posts.length; i++) {
+            if (id === this.#posts[i].id) {
+                return this.#posts.splice(i, 1)
+            }
+        }
+    }
 
 
+    getPostById = function (id) {
+        for (let i = 0; i < this.#posts.length; i++) {
+            if (id === this.#posts[i].id) {
+                console.log(this.#posts[i]);
+            } else return null;
+        }
+    }
 }
+
+
+
+
 

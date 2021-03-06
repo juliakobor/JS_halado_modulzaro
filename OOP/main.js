@@ -23,3 +23,8 @@ let firstBlog = new Blog("My first blog", john);
 console.log(firstBlog);
 firstBlog.fetchPosts();
 console.log(firstBlog.Posts);
+firstBlog.addPost(new Post("This is the title", "This is the body", 222));
+firstBlog.deletePost(3);
+firstBlog.getPostById(3);
+
+
