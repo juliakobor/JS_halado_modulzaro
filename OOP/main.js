@@ -24,7 +24,7 @@ console.log(firstBlog);
 firstBlog.fetchPosts();
 console.log(firstBlog.Posts);
 firstBlog.addPost(new Post("This is the title", "This is the body", 222));
-firstBlog.deletePost(3);
-firstBlog.getPostById(3);
+firstBlog.deletePost(222);
+firstBlog.getPostById(222);
 
 
