@@ -28,26 +28,24 @@ export class Blog {
     }
 
     addPost(post) {
-        this.#posts.push(post);
+        if (post instanceof Post) {
+            this.#posts.push(post);
+        } else throw new Error("Post item is not an instance of Post class!")
     }
 
 
-    deletePost(id) {
-        for (let i = 0; i < this.#posts.length; i++) {
-            if (id === this.#posts[i].id) {
-                return this.#posts.splice(i, 1)
-            }
-        }
-    }
+    deletePost(postId) {
+        const indexToDelete = this.#posts.findIndex(item => item.id === postId)
 
-    getPostById(id) {
-        for (let i = 0; i < this.#posts.length; i++) {
-            if (id === this.#posts[i].id) {
-                console.log(this.#posts[i]);
-            } else return null;
-        }
+        if (indexToDelete) {
+            this.#posts.splice(indexToDelete, 1);
+            return true;
+        } else return false;
     }
 }
+
+
+
 
 
 
