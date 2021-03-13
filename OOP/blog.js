@@ -8,9 +8,10 @@ export class Blog {
     constructor(title, author) {
         this.#title = title;
         this.#author = author;
+        this.#fetchPosts();
     }
 
-    fetchPosts() {
+    #fetchPosts() {
         let fetchPromise = fetch("https://jsonplaceholder.typicode.com/posts");
         fetchPromise
             .then(response => {
@@ -25,24 +26,9 @@ export class Blog {
             .catch(error => {
                 console.log("error:", error)
             });
-    }
-
-    addPost(post) {
-        if (post instanceof Post) {
-            this.#posts.push(post);
-        } else throw new Error("Post item is not an instance of Post class!")
-    }
+    }}
 
 
-    deletePost(postId) {
-        const indexToDelete = this.#posts.findIndex(item => item.id === postId)
-
-        if (indexToDelete) {
-            this.#posts.splice(indexToDelete, 1);
-            return true;
-        } else return false;
-    }
-}
 
 
 
